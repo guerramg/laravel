@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+
+Route:: namespace('App')->group(function(){
+    Route::get('/', 'Http\Controllers\HomeController');
+    Route::get('produtos','Http\Controllers\CategoryController@index');
+    Route::get('produtos/{slug}','Http\Controllers\CategoryController@show');
+    Route::get('blog','Http\Controllers\BlogController');
+    Route::view('sobre','site.about.index');
+    Route::get('contato','Http\Controllers\ContactController@index');
+    Route::post('contato','Http\Controllers\ContactController@form');
 });
